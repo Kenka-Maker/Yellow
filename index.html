@@ -170,7 +170,7 @@
 
 <!-- AUDIO -->
 <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9bba2c.mp3" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <!-- INTRO -->
@@ -257,7 +257,9 @@ function openFlower() {
     }, 50);
 
     // música
-    document.getElementById("music").play();
+    var music = document.getElementById("music");
+    music.volume = 0.3;
+    music.play().catch(()=>{});
 
     // texto
     const textElement = document.getElementById("text");
