@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para ti 💛</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #fff9c4, #ffe082);
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+    }
+
+    /* CORAZONES */
+    .heart {
+        position: fixed;
+        top: -20px;
+        font-size: 20px;
+        color: #fdd835;
+        animation: fall linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(110vh); }
+    }
+
+    /* INTRO */
+    .intro {
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .intro-text {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #a67c00;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+
+    /* CONTENIDO */
+    .content {
+        display: none;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.8s ease;
+    }
+
+    .content.show {
+        display: flex;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        max-width: 900px;
+    }
+
+    /* FLOR */
+    .flower {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        transform: scale(0);
+        animation: bloom 1s ease forwards;
+    }
+
+    @keyframes bloom {
+        0% { transform: scale(0); }
+        60% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    .petal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 40px;
+        height: 80px;
+        background: radial-gradient(circle, #fff176 20%, #fdd835 70%);
+        border-radius: 50%;
+        transform-origin: center bottom;
+    }
+
+    .petal:nth-child(1)  { transform: translate(-50%, -100%) rotate(0deg); }
+    .petal:nth-child(2)  { transform: translate(-50%, -100%) rotate(30deg); }
+    .petal:nth-child(3)  { transform: translate(-50%, -100%) rotate(60deg); }
+    .petal:nth-child(4)  { transform: translate(-50%, -100%) rotate(90deg); }
+    .petal:nth-child(5)  { transform: translate(-50%, -100%) rotate(120deg); }
+    .petal:nth-child(6)  { transform: translate(-50%, -100%) rotate(150deg); }
+    .petal:nth-child(7)  { transform: translate(-50%, -100%) rotate(180deg); }
+    .petal:nth-child(8)  { transform: translate(-50%, -100%) rotate(210deg); }
+    .petal:nth-child(9)  { transform: translate(-50%, -100%) rotate(240deg); }
+    .petal:nth-child(10) { transform: translate(-50%, -100%) rotate(270deg); }
+    .petal:nth-child(11) { transform: translate(-50%, -100%) rotate(300deg); }
+    .petal:nth-child(12) { transform: translate(-50%, -100%) rotate(330deg); }
+
+    .center {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background: radial-gradient(circle, #5d4037, #3e2723);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .stem {
+        position: absolute;
+        width: 10px;
+        height: 120px;
+        background: linear-gradient(#2e7d32, #1b5e20);
+        top: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px;
+    }
+
+    .leaf {
+        position: absolute;
+        width: 60px;
+        height: 30px;
+        background: #43a047;
+        border-radius: 50%;
+        top: 200px;
+        left: 50%;
+        transform: translateX(-120%) rotate(-30deg);
+    }
+
+    /* TEXTO */
+    .text {
+        max-width: 500px;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #333;
+        white-space: pre-wrap;
+    }
+
+    .final {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #d4af37;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    .final.show {
+        opacity: 1;
+    }
+</style>
+</head>
+<body>
+
+<!-- AUDIO -->
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9bba2c.mp3" type="audio/mpeg">
+</audio>
+
+<!-- INTRO -->
+<div class="intro" onclick="openFlower()">
+    <div class="flower" style="transform: scale(0.6); animation:none;">
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <div class="center"></div>
+    </div>
+    <div class="intro-text">🌻 Ábreme</div>
+</div>
+
+<!-- CONTENIDO -->
+<div class="content" id="content">
+    <div class="container">
+        <div class="flower">
+            <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+            <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+            <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+            <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+
+            <div class="center"></div>
+            <div class="stem"></div>
+            <div class="leaf"></div>
+        </div>
+
+        <div>
+            <div class="text" id="text"></div>
+            <div class="final" id="final">Para: Mi amor 💛</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const message = `Te amo 💛
+
+Te amo más de lo que mis palabras alcanzan a decir y más de lo que puedo explicar. 
+Incluso cuando callo, hay sentimientos que no necesitan voz y se quedan viviendo en el pecho. 
+Te amo en lo simple y en lo difícil, en lo que somos cuando nadie mira y en esa forma tan tuya de existir 
+que me desarma sin esfuerzo. Y si alguna vez dudas de ese amor, recuerda que incluso en silencio sigo 
+amándote de la manera más profunda.
+ Muchas gracias por llegar a mi vida, por ser mi compañera, mi amiga y mi amor.
+ Eres lo mejor que me ha pasado y cada día a tu lado es un regalo que valoro infinitamente.`;
+
+/* MAQUINA DE ESCRIBIR */
+function typeWriter(text, element, callback, speed = 25) {
+    let i = 0;
+    function write() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(write, speed);
+        } else if (callback) {
+            callback();
+        }
+    }
+    write();
+}
+
+/* CORAZONES */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💛";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    heart.style.fontSize = (12 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+
+/* ABRIR */
+function openFlower() {
+    document.querySelector('.intro').style.display = 'none';
+
+    const content = document.getElementById('content');
+    content.style.display = 'flex';
+
+    setTimeout(() => {
+        content.classList.add('show');
+    }, 50);
+
+    // música
+    document.getElementById("music").play();
+
+    // texto
+    const textElement = document.getElementById("text");
+    typeWriter(message, textElement, () => {
+        document.getElementById("final").classList.add("show");
+    });
+
+    // corazones
+    setInterval(createHeart, 300);
+}
+</script>
+
+</body>
+</html>
